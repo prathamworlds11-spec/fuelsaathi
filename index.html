@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#111113" />
+<meta name="description" content="FuelSaathi helps track bike, scooter and car fuel costs, distance and refill estimates." />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icon.svg" type="image/svg+xml" />
+<title>FuelSaathi — Fuel & Ride Tracker</title>
+<style>
+:root{--bg:#101012;--panel:#19191d;--panel2:#202025;--line:#34343b;--text:#f7f4f2;--muted:#b4afb0;--red:#f04444;--red2:#bd202b;--amber:#ffb34d;--green:#7bd8a8;--radius:20px;--shadow:0 14px 36px #0005}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#552020 0,transparent 38%),radial-gradient(ellipse at -10% 20%,#382015 0,transparent 28%),var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}button,input,select{font:inherit}button{cursor:pointer}a{color:#ffc2c2}.shell{max-width:1120px;margin:auto;padding:22px 18px 48px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:22px}.brand{display:flex;align-items:center;gap:11px}.logo{width:45px;height:45px;border-radius:14px;background:linear-gradient(145deg,var(--red),#8b1018);display:grid;place-items:center;box-shadow:0 7px 24px #f0444433}.logo svg{width:25px;height:25px}.brand h1{font-size:21px;letter-spacing:-.6px;line-height:1.1;margin:0}.brand p{margin:4px 0 0;color:var(--muted);font-size:12px}.top-actions{display:flex;gap:8px;align-items:center}.pill{border:1px solid #513035;color:#ffc7c2;background:#28181b;padding:7px 11px;border-radius:99px;font-size:12px;white-space:nowrap}.button{border:0;border-radius:12px;padding:11px 15px;background:var(--red);color:white;font-weight:700;box-shadow:0 7px 18px #f0444424;transition:transform .15s,filter .15s}.button:hover{filter:brightness(1.08);transform:translateY(-1px)}.button.secondary{background:#29292f;border:1px solid #3d3d44;box-shadow:none}.button.ghost{background:transparent;border:1px solid var(--line);box-shadow:none}.button.small{font-size:13px;padding:8px 11px}.hero{position:relative;overflow:hidden;background:linear-gradient(118deg,#39181b 0%,#251619 47%,#1a191d 100%);border:1px solid #673036;border-radius:26px;padding:27px;margin-bottom:19px;box-shadow:var(--shadow)}.hero:after{content:"";position:absolute;right:-54px;top:-88px;width:280px;height:280px;border:38px solid #ff656512;border-radius:50%;pointer-events:none}.hero-content{position:relative;z-index:1;max-width:700px}.eyebrow{text-transform:uppercase;letter-spacing:1.5px;color:#ffaaa8;font-size:11px;font-weight:800}.hero h2{font-size:clamp(25px,4vw,38px);line-height:1.13;letter-spacing:-1.2px;margin:9px 0 11px;max-width:600px}.hero h2 span{color:#ff6565}.hero p{margin:0;color:#d8c8ca;max-width:650px}.hero-bottom{display:flex;flex-wrap:wrap;gap:10px;margin-top:19px}.hero-note{font-size:12px;color:#c5b2b4;margin-top:14px}.grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);gap:18px;align-items:start}.stack{display:grid;gap:18px}.card{background:linear-gradient(145deg,#1d1d22,#17171b);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:0 9px 28px #0002;min-width:0}.card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:16px}.card h3{margin:0;font-size:17px;letter-spacing:-.3px}.sub{margin:4px 0 0;color:var(--muted);font-size:12px}.step{display:inline-grid;place-items:center;width:29px;height:29px;border-radius:10px;background:#382024;color:#ff9292;font-weight:800;font-size:13px;flex-shrink:0}.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:grid;gap:6px;min-width:0}.field.full{grid-column:1/-1}.field label{font-size:12px;color:#d0cbcc;font-weight:650}.field small{font-size:11px;color:#948e91}.control{width:100%;min-width:0;border:1px solid #3b3b42;background:#111114;color:var(--text);border-radius:11px;padding:11px 12px;outline:none}.control:focus{border-color:#f04444;box-shadow:0 0 0 3px #f0444418}.hint{padding:11px 12px;border-radius:12px;background:#292126;border:1px solid #503036;color:#e8cbce;font-size:12px;margin-top:14px}.hint strong{color:#ffaaaa}.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.metric{background:#111114;border:1px solid #303036;border-radius:15px;padding:15px;min-width:0}.metric.primary{background:linear-gradient(145deg,#471d22,#2a191d);border-color:#743038}.metric .label{font-size:11px;color:#bdb5b6}.metric .value{font-weight:850;font-size:clamp(21px,3vw,29px);letter-spacing:-.7px;margin:4px 0 1px;overflow-wrap:anywhere}.metric .detail{font-size:11px;color:#a8a0a2}.redtext{color:#ff7777}.result-title{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:#ffaaa8;font-weight:800;margin:18px 0 10px}.progress-wrap{margin-top:15px;padding:15px;border:1px solid #3a3333;background:#171416;border-radius:14px}.progress-top{display:flex;justify-content:space-between;gap:10px;font-size:12px;margin-bottom:9px}.progress{height:8px;background:#373238;border-radius:99px;overflow:hidden}.bar{height:100%;width:50%;background:linear-gradient(90deg,#ba242d,#ff6c54);border-radius:99px;transition:width .2s}.tiny{font-size:11px;color:#a9a2a4;margin-top:8px}.section-title{display:flex;align-items:center;gap:10px;margin-bottom:14px}.iconbox{width:36px;height:36px;display:grid;place-items:center;border-radius:12px;background:#302024;color:#ff8f8f;font-size:19px;flex-shrink:0}.map-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.map-action{padding:14px;border:1px solid #3a3a40;background:#151518;border-radius:14px;display:flex;align-items:flex-start;gap:10px;text-decoration:none;color:var(--text);min-height:78px}.map-action:hover{border-color:#a34349;background:#21181b}.map-action .map-icon{font-size:20px}.map-action strong{display:block;font-size:13px}.map-action span{display:block;font-size:11px;color:var(--muted);margin-top:3px}.statusline{font-size:12px;color:var(--muted);margin-top:10px}.history-list{display:grid;gap:9px}.history-item{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px;border:1px solid #34343a;background:#141417;border-radius:12px}.history-item strong{display:block;font-size:13px}.history-item small{color:var(--muted);font-size:11px}.history-amount{text-align:right;white-space:nowrap}.history-amount b{color:#ff9797}.empty{color:var(--muted);font-size:13px;text-align:center;padding:19px 8px;border:1px dashed #393940;border-radius:12px}.guide-list{counter-reset:steps;display:grid;gap:12px}.guide-step{display:flex;gap:11px;align-items:flex-start}.guide-num{width:27px;height:27px;border-radius:9px;background:#3a1e22;color:#ff9a9a;display:grid;place-items:center;font-weight:800;flex-shrink:0}.guide-step b{font-size:13px}.guide-step p{margin:2px 0 0;color:var(--muted);font-size:12px}.custom-panel{border:1px dashed #514047;border-radius:13px;padding:14px;margin-top:13px;display:none}.custom-panel.open{display:block}.footer{padding:24px 4px 0;text-align:center;color:#888185;font-size:11px}.footer strong{color:#bfb5b8}.toast{position:fixed;bottom:18px;left:50%;transform:translate(-50%,140%);background:#f8f4f2;color:#161316;padding:12px 16px;border-radius:12px;font-weight:700;font-size:13px;box-shadow:var(--shadow);z-index:20;transition:transform .25s;max-width:calc(100vw - 28px);text-align:center}.toast.show{transform:translate(-50%,0)}.privacy{color:#c2b8bb;font-size:11px;margin-top:12px;line-height:1.55}.hide{display:none!important}.two-btn{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.separator{height:1px;background:var(--line);margin:16px 0}.checkboxrow{display:flex;align-items:center;gap:8px;font-size:12px;color:#c8c1c2}.checkboxrow input{accent-color:var(--red)}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.shell{padding:15px 12px 35px}.hero{padding:22px}.card{padding:17px}.topbar{align-items:flex-start}.top-actions{flex-direction:column;align-items:flex-end}.pill{font-size:10px}.brand h1{font-size:19px}.results-grid{gap:9px}.metric{padding:13px}}
+@media(max-width:390px){.field-grid,.map-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.hero h2{font-size:27px}.top-actions .button{font-size:11px;padding:8px 9px}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <div class="brand"><div class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v16"/><path d="M2 21h15M7 7h5v5H7zM15 8h2l3 3v6a2 2 0 0 0 4 0v-6l-3-3"/><path d="M18 14h2"/></svg></div><div><h1>FuelSaathi</h1><p>Fuel • Distance • Daily budget</p></div></div>
+    <div class="top-actions"><span class="pill">● Free · No login</span><button class="button secondary small" id="installBtn" hidden>＋ Install app</button></div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">Aapki ride ka simple hisaab</div>
+      <h2>Petrol ka kharcha ab <span>andaze se nahi.</span></h2>
+      <p>Apni scooty, bike ya car select karo. Distance aur petrol price bharo—FuelSaathi aapko daily, weekly, monthly kharcha aur refill ka estimate samjhayega.</p>
+      <div class="hero-bottom"><button class="button" onclick="document.getElementById('vehicleCard').scrollIntoView({behavior:'smooth',block:'start'})">Start tracking ↓</button><button class="button secondary" id="helpBtn">Kaise use karein?</button></div>
+      <div class="hero-note">Warm dark theme · Mobile-friendly · Aapka data isi browser mein save hota hai</div>
+    </div>
+  </section>
+
+  <main class="grid">
+    <div class="stack">
+      <section class="card" id="vehicleCard">
+        <div class="card-head"><div><h3>1. Apni gaadi select karo</h3><p class="sub">Pehli baar use kar rahe ho? List se choose karo ya apni gaadi add karo.</p></div><span class="step">01</span></div>
+        <div class="field-grid">
+          <div class="field"><label for="category">Vehicle type</label><select id="category" class="control"><option>Scooty</option><option>Bike</option><option>Sports Bike</option><option>Car</option></select></div>
+          <div class="field"><label for="brand">Brand</label><select id="brand" class="control"></select></div>
+          <div class="field full"><label for="model">Model</label><select id="model" class="control"></select></div>
+          <div class="field full"><label for="variant">Version / variant</label><select id="variant" class="control"></select></div>
+          <div class="field"><label for="mileage">Mileage (km/litre)</label><input id="mileage" class="control" type="number" min="1" max="150" step="0.1" value="45" inputmode="decimal" /></div>
+          <div class="field"><label>Estimate type</label><div class="control" style="color:#c4b8bb;font-size:12px">Editable starting estimate</div></div>
+        </div>
+        <div class="hint"><strong>Dhyaan dein:</strong> Mileage traffic, servicing, tyre pressure, riding style aur AC (car mein) par depend karta hai. Apni actual mileage pata ho toh yahan edit karo.</div>
+        <div class="two-btn"><button class="button secondary small" id="toggleCustom">＋ Meri gaadi list mein nahi hai</button></div>
+        <div class="custom-panel" id="customPanel">
+          <div class="field-grid">
+            <div class="field"><label for="customCategory">Type</label><select id="customCategory" class="control"><option>Scooty</option><option>Bike</option><option>Sports Bike</option><option>Car</option></select></div>
+            <div class="field"><label for="customBrand">Brand</label><input id="customBrand" class="control" placeholder="e.g. Honda" maxlength="40" /></div>
+            <div class="field"><label for="customModel">Model</label><input id="customModel" class="control" placeholder="e.g. Activa 110" maxlength="50" /></div>
+            <div class="field"><label for="customVariant">Version</label><input id="customVariant" class="control" placeholder="e.g. 6G Deluxe" maxlength="50" /></div>
+            <div class="field"><label for="customMileage">Expected mileage (km/l)</label><input id="customMileage" class="control" type="number" min="1" max="150" step="0.1" placeholder="e.g. 45" /></div>
+            <div class="field" style="align-self:end"><button class="button small" id="saveCustom">Save & select vehicle</button></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><div><h3>2. Roz kitna chalate ho?</h3><p class="sub">Example: ghar se station 9 km, roz up-down = 18 km.</p></div><span class="step">02</span></div>
+        <div class="field-grid">
+          <div class="field"><label for="oneWay">One-way distance (km)</label><input class="control" id="oneWay" type="number" min="0" max="10000" step="0.1" value="9" inputmode="decimal" /></div>
+          <div class="field"><label for="roundTrips">Up-down trips per day</label><select class="control" id="roundTrips"><option value="0">0 — one-way only / no commute</option><option value="0.5">0.5 — one round trip in 2 days</option><option value="1" selected>1 — up + down once</option><option value="2">2 — up-down twice</option><option value="3">3 — up-down 3 times</option><option value="4">4 — up-down 4 times</option></select></div>
+          <div class="field"><label for="extraKm">Extra riding per day (km)</label><input class="control" id="extraKm" type="number" min="0" max="10000" step="0.1" value="0" inputmode="decimal" /></div>
+          <div class="field"><label for="daysWeek">Days used per week</label><select class="control" id="daysWeek"><option value="1">1 day</option><option value="2">2 days</option><option value="3">3 days</option><option value="4">4 days</option><option value="5">5 days</option><option value="6" selected>6 days</option><option value="7">7 days</option></select></div>
+          <div class="field full"><label for="monthDays">Vehicle use days per month</label><input class="control" id="monthDays" type="number" min="1" max="31" value="26" inputmode="numeric" /><small>26 days = roughly 6 days a week. Weekend / daily use ke hisaab se edit karo.</small></div>
+        </div>
+        <div class="hint">Agar aapko road distance nahi pata, map button se route dekh sakte ho. Is calculator mein accurate hisaab ke liye map par dikhne wala distance yahan khud enter karo.</div>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><div><h3>3. Petrol aur refill amount</h3><p class="sub">Price apne city ke petrol pump bill ke hisaab se set karo.</p></div><span class="step">03</span></div>
+        <div class="field-grid">
+          <div class="field"><label for="fuelPrice">Petrol price (₹ / litre)</label><input class="control" id="fuelPrice" type="number" min="1" max="1000" step="0.01" value="103.50" inputmode="decimal" /></div>
+          <div class="field"><label for="fillAmount">Last refill amount (₹)</label><input class="control" id="fillAmount" type="number" min="0" max="100000" step="10" value="200" inputmode="decimal" /></div>
+        </div>
+        <div class="two-btn"><button class="button small" id="calculateBtn">Update my estimate ↻</button><button class="button ghost small" id="resetBtn">Reset sample</button></div>
+        <p class="privacy">Price automatically live update nahi hota. ₹103.50 sirf editable sample hai—apne local pump ka aaj ka rate daalein. Estimates guaranteed mileage ya exact remaining tank fuel nahi hain.</p>
+      </section>
+    </div>
+
+    <div class="stack">
+      <section class="card" id="resultCard">
+        <div class="card-head"><div><h3>Aapka fuel report</h3><p class="sub" id="vehicleSummary">Honda Activa 6G 110 · estimate</p></div><span class="step">₹</span></div>
+        <div class="results-grid">
+          <div class="metric primary"><div class="label">Daily petrol cost</div><div class="value" id="dailyCost">₹41.40</div><div class="detail" id="dailyLitres">0.40 litres / day</div></div>
+          <div class="metric"><div class="label">Daily distance</div><div class="value" id="dailyDistance">18 km</div><div class="detail">Up + down + extra</div></div>
+          <div class="metric"><div class="label">Weekly cost</div><div class="value" id="weeklyCost">₹248</div><div class="detail" id="weeklyDistance">108 km / week</div></div>
+          <div class="metric"><div class="label">Monthly cost</div><div class="value" id="monthlyCost">₹1,076</div><div class="detail" id="monthlyDistance">468 km / month</div></div>
+        </div>
+        <div class="result-title">Aapka ₹ refill kitna chalega?</div>
+        <div class="results-grid">
+          <div class="metric"><div class="label">Refill se petrol</div><div class="value" id="refillLitres">1.93 L</div><div class="detail">Amount ÷ price per litre</div></div>
+          <div class="metric"><div class="label">Refill se range</div><div class="value" id="refillRange">87 km</div><div class="detail">Mileage ke estimate par</div></div>
+        </div>
+        <div class="progress-wrap"><div class="progress-top"><span>Estimated usage coverage</span><strong id="refillDays">4.8 days</strong></div><div class="progress"><div class="bar" id="coverageBar"></div></div><div class="tiny" id="refillTip">₹200 ki refill aapke average daily use par approx 4.8 din ki distance cover kar sakti hai.</div></div>
+        <div class="hint"><strong>Simple formula:</strong> Daily km ÷ mileage × petrol price = daily petrol cost. Asli result aapki driving aur traffic ke hisaab se badal sakta hai.</div>
+      </section>
+
+      <section class="card">
+        <div class="section-title"><div class="iconbox">📍</div><div><h3>Map aur nearby petrol pump</h3><p class="sub">Location permission sirf button dabane par maangi jayegi.</p></div></div>
+        <div class="map-grid">
+          <button class="map-action" id="nearPumpBtn" style="text-align:left"><span class="map-icon">⛽</span><span><strong>Petrol pump near me</strong><span>Map par nearby stations search karo</span></span></button>
+          <button class="map-action" id="locateBtn" style="text-align:left"><span class="map-icon">🧭</span><span><strong>Get my location</strong><span>Current location detect karo</span></span></button>
+        </div>
+        <div class="statusline" id="locationStatus" aria-live="polite">Location abhi share nahi ki gayi hai.</div>
+        <div class="separator"></div>
+        <div class="field-grid">
+          <div class="field"><label for="origin">Starting point</label><input class="control" id="origin" placeholder="e.g. Home, Pune" /></div>
+          <div class="field"><label for="destination">Destination</label><input class="control" id="destination" placeholder="e.g. Railway station" /></div>
+          <div class="field full"><button class="button secondary" id="routeBtn">Open route in Google Maps ↗</button></div>
+        </div>
+        <p class="privacy">Map links open in another tab/app. Map service ka route ya station availability FuelSaathi se independently verify nahi hota; map par check kar lena.</p>
+      </section>
+
+      <section class="card">
+        <div class="section-title"><div class="iconbox">🧾</div><div><h3>Refill history</h3><p class="sub">Petrol bharwane ka simple record rakho.</p></div></div>
+        <div class="field-grid">
+          <div class="field"><label for="logAmount">Refill amount (₹)</label><input class="control" id="logAmount" type="number" min="1" step="10" placeholder="e.g. 200" inputmode="decimal" /></div>
+          <div class="field"><label for="logOdo">Odometer km (optional)</label><input class="control" id="logOdo" type="number" min="0" step="0.1" placeholder="e.g. 12540" inputmode="decimal" /></div>
+          <div class="field full"><button class="button small" id="saveRefill">＋ Save refill</button></div>
+        </div>
+        <div class="result-title">Recent refills</div>
+        <div id="historyList" class="history-list"><div class="empty">Abhi koi refill save nahi hai. Amount daal kar “Save refill” dabao.</div></div>
+        <div class="two-btn"><button class="button ghost small" id="exportBtn">Export history CSV</button><button class="button ghost small" id="clearHistoryBtn">Clear history</button></div>
+      </section>
+
+      <section class="card" id="guideCard">
+        <div class="section-title"><div class="iconbox">💡</div><div><h3>Bilkul beginner ho? Yahan se shuru karo</h3><p class="sub">Bas ye 4 steps follow karo.</p></div></div>
+        <div class="guide-list">
+          <div class="guide-step"><div class="guide-num">1</div><div><b>Gaadi choose karo</b><p>Apni scooty, bike, sports bike ya car ka model select karo. Nahi mile toh custom add karo.</p></div></div>
+          <div class="guide-step"><div class="guide-num">2</div><div><b>Distance bharo</b><p>Ghar se station 9 km hai aur roz up-down karte ho, toh one-way 9 km aur trips/day 1 rakho.</p></div></div>
+          <div class="guide-step"><div class="guide-num">3</div><div><b>Petrol price aur refill amount bharo</b><p>Local petrol rate enter karo. ₹200 bharaya hai toh refill amount ₹200 rehne do ya change kar do.</p></div></div>
+          <div class="guide-step"><div class="guide-num">4</div><div><b>Report samjho</b><p>Daily/week/month cost aur us refill ki estimated range dekho. Ye exact tank gauge nahi, ek planning estimate hai.</p></div></div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="footer"><strong>FuelSaathi</strong> · Free fuel & ride planning tool<br/>Data is saved only in this browser. No account, paid API, or subscription required. <br/>Fuel/mileage values are estimates; verify current fuel prices locally.</footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+'use strict';
+const BASE_VEHICLES = [
+// Scooters
+{cat:'Scooty',brand:'Honda',model:'Activa 6G 110',variant:'Standard',mileage:45},{cat:'Scooty',brand:'Honda',model:'Activa 6G 110',variant:'Deluxe / H-Smart',mileage:45},{cat:'Scooty',brand:'Honda',model:'Activa 125',variant:'Standard / Disc',mileage:43},{cat:'Scooty',brand:'Honda',model:'Dio 110',variant:'Standard / Deluxe',mileage:48},
+{cat:'Scooty',brand:'TVS',model:'Jupiter 110',variant:'Drum / Disc',mileage:48},{cat:'Scooty',brand:'TVS',model:'Jupiter 125',variant:'Disc / SmartXonnect',mileage:45},{cat:'Scooty',brand:'TVS',model:'NTorq 125',variant:'Race Edition / XT',mileage:42},{cat:'Scooty',brand:'Suzuki',model:'Access 125',variant:'Standard / Special Edition',mileage:45},{cat:'Scooty',brand:'Suzuki',model:'Burgman Street 125',variant:'Standard / EX',mileage:43},{cat:'Scooty',brand:'Yamaha',model:'RayZR 125',variant:'Street Rally / Hybrid',mileage:50},{cat:'Scooty',brand:'Hero',model:'Xoom 110',variant:'VX / ZX',mileage:45},{cat:'Scooty',brand:'Hero',model:'Pleasure Plus',variant:'LX / VX / XTEC',mileage:48},
+// Bikes
+{cat:'Bike',brand:'Hero',model:'Splendor Plus',variant:'Standard / i3S',mileage:60},{cat:'Bike',brand:'Hero',model:'HF Deluxe',variant:'Drum / i3S',mileage:60},{cat:'Bike',brand:'Hero',model:'Passion Plus',variant:'Standard',mileage:55},{cat:'Bike',brand:'Honda',model:'Shine 125',variant:'Drum / Disc',mileage:50},{cat:'Bike',brand:'Honda',model:'SP125',variant:'Drum / Disc',mileage:55},{cat:'Bike',brand:'Honda',model:'Unicorn 160',variant:'Standard',mileage:45},{cat:'Bike',brand:'TVS',model:'Raider 125',variant:'Drum / iGO / SX',mileage:55},{cat:'Bike',brand:'Bajaj',model:'Pulsar 125',variant:'Neon / Carbon',mileage:50},{cat:'Bike',brand:'Bajaj',model:'Pulsar 150',variant:'Single / Twin Disc',mileage:45},{cat:'Bike',brand:'Bajaj',model:'Platina 110',variant:'Drum / ABS',mileage:65},{cat:'Bike',brand:'Yamaha',model:'FZ-S FI',variant:'Standard / Deluxe',mileage:45},
+// Sports bikes
+{cat:'Sports Bike',brand:'TVS',model:'Apache RTR 160',variant:'2V / 4V',mileage:40},{cat:'Sports Bike',brand:'TVS',model:'Apache RTR 200 4V',variant:'Standard / Race Edition',mileage:35},{cat:'Sports Bike',brand:'Bajaj',model:'Pulsar NS200',variant:'Standard',mileage:35},{cat:'Sports Bike',brand:'Bajaj',model:'Pulsar N250',variant:'Standard',mileage:35},{cat:'Sports Bike',brand:'Yamaha',model:'R15 V4',variant:'Standard / M',mileage:40},{cat:'Sports Bike',brand:'Yamaha',model:'MT-15 V2',variant:'Standard / Deluxe',mileage:45},{cat:'Sports Bike',brand:'KTM',model:'Duke 200',variant:'Standard',mileage:30},{cat:'Sports Bike',brand:'KTM',model:'RC 200',variant:'Standard',mileage:30},{cat:'Sports Bike',brand:'Royal Enfield',model:'Classic 350',variant:'Halcyon / Signals / Dark',mileage:32},{cat:'Sports Bike',brand:'Royal Enfield',model:'Hunter 350',variant:'Retro / Metro',mileage:35},{cat:'Sports Bike',brand:'Royal Enfield',model:'Continental GT 650',variant:'Standard / Custom',mileage:25},
+// Cars - indicative petrol estimates
+{cat:'Car',brand:'Maruti Suzuki',model:'WagonR Petrol',variant:'1.0 / 1.2',mileage:20},{cat:'Car',brand:'Maruti Suzuki',model:'Swift Petrol',variant:'LXi / VXi / ZXi',mileage:18},{cat:'Car',brand:'Maruti Suzuki',model:'Baleno Petrol',variant:'Sigma / Delta / Zeta / Alpha',mileage:19},{cat:'Car',brand:'Maruti Suzuki',model:'Brezza Petrol',variant:'LXi / VXi / ZXi',mileage:16},{cat:'Car',brand:'Hyundai',model:'Grand i10 Nios Petrol',variant:'Era / Magna / Sportz / Asta',mileage:17},{cat:'Car',brand:'Hyundai',model:'i20 Petrol',variant:'Era / Magna / Sportz / Asta',mileage:15},{cat:'Car',brand:'Hyundai',model:'Creta Petrol',variant:'E / EX / S / SX',mileage:14},{cat:'Car',brand:'Tata',model:'Punch Petrol',variant:'Pure / Adventure / Accomplished',mileage:16},{cat:'Car',brand:'Tata',model:'Nexon Petrol',variant:'Smart / Pure / Creative',mileage:14},{cat:'Car',brand:'Honda',model:'City Petrol',variant:'SV / V / VX / ZX',mileage:17},{cat:'Car',brand:'Toyota',model:'Glanza Petrol',variant:'E / S / G / V',mileage:19},{cat:'Car',brand:'Kia',model:'Sonet Petrol',variant:'HTE / HTK / HTX / GTX',mileage:16}
+];
+const $ = id => document.getElementById(id);
+const STORAGE_KEY = 'fuelsaathi_v1';
+let state = {customVehicles:[], history:[], location:null, deferredPrompt:null};
+function loadState(){try{const s=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');state={...state,...s};if(!Array.isArray(state.customVehicles))state.customVehicles=[];if(!Array.isArray(state.history))state.history=[];}catch(e){}}
+function saveState(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify({...state,location:null}));}catch(e){toast('Browser storage unavailable. Export your refill history to keep a copy.');}}
+function allVehicles(){return [...BASE_VEHICLES,...state.customVehicles];}
+function unique(xs){return [...new Set(xs)];}
+function selectOptions(el, values, selected){el.innerHTML='';values.forEach(v=>{const op=document.createElement('option');op.value=v;op.textContent=v;el.appendChild(op);});if(selected && values.includes(selected))el.value=selected;}
+function matching(cat,brand,model){return allVehicles().filter(v=>(!cat||v.cat===cat)&&(!brand||v.brand===brand)&&(!model||v.model===model));}
+function populateBrands(wantedBrand,wantedModel,wantedVariant){const cat=$('category').value;const brands=unique(matching(cat).map(v=>v.brand)).sort();selectOptions($('brand'),brands,wantedBrand);populateModels(wantedModel,wantedVariant);}
+function populateModels(wantedModel,wantedVariant){const list=matching($('category').value,$('brand').value);const models=unique(list.map(v=>v.model)).sort();selectOptions($('model'),models,wantedModel);populateVariants(wantedVariant);}
+function populateVariants(wantedVariant){const list=matching($('category').value,$('brand').value,$('model').value);const variants=unique(list.map(v=>v.variant));selectOptions($('variant'),variants,wantedVariant);const selected=list.find(v=>v.variant===$('variant').value)||list[0];if(selected){$('mileage').value=selected.mileage;$('vehicleSummary').textContent=`${selected.brand} ${selected.model} · ${selected.variant}`;}calculate();}
+function currentVehicle(){return matching($('category').value,$('brand').value,$('model').value).find(v=>v.variant===$('variant').value)||{brand:$('brand').value||'Vehicle',model:$('model').value||'',variant:$('variant').value||'',mileage:Number($('mileage').value)||40};}
+function fmt(n,d=0){if(!Number.isFinite(n))return '—';return n.toLocaleString('en-IN',{maximumFractionDigits:d,minimumFractionDigits:0});}
+function money(n){return '₹'+fmt(n,2);}
+function value(id){return Number($(id).value)||0;}
+function setText(id,text){$(id).textContent=text;}
+function calculate(){
+ const mileage=Math.max(1,value('mileage'));const price=Math.max(0,value('fuelPrice'));const oneWay=Math.max(0,value('oneWay'));const trips=Math.max(0,value('roundTrips'));const extra=Math.max(0,value('extraKm'));const daysWeek=Math.max(0,value('daysWeek'));const daysMonth=Math.max(0,Math.min(31,value('monthDays')));const refill=Math.max(0,value('fillAmount'));
+ const dailyKm=oneWay*2*trips+extra;const weeklyKm=dailyKm*daysWeek;const monthlyKm=dailyKm*daysMonth;const perKm=price/mileage;const dailyLitres=dailyKm/mileage;const daily=dailyKm*perKm;const weekly=weeklyKm*perKm;const monthly=monthlyKm*perKm;const refillLitres=price>0?refill/price:0;const refillRange=refillLitres*mileage;const refillDays=dailyKm>0?refillRange/dailyKm:0;
+ setText('dailyCost',money(daily));setText('dailyLitres',`${fmt(dailyLitres,2)} litres / day`);setText('dailyDistance',`${fmt(dailyKm,1)} km`);setText('weeklyCost',money(weekly));setText('weeklyDistance',`${fmt(weeklyKm,1)} km / week`);setText('monthlyCost',money(monthly));setText('monthlyDistance',`${fmt(monthlyKm,1)} km / month`);setText('refillLitres',`${fmt(refillLitres,2)} L`);setText('refillRange',`${fmt(refillRange,1)} km`);setText('refillDays',dailyKm>0?`${fmt(refillDays,1)} days`:'No daily use entered');
+ const coverage=Math.min(100,Math.max(0,refillDays/7*100));$('coverageBar').style.width=coverage+'%';
+ let tip;if(price<=0)tip='Petrol price bharo, tab refill estimate calculate hoga.';else if(dailyKm<=0)tip='Daily distance 0 hai. Refill ki range dikh rahi hai, lekin kitne din chalega uske liye commute set karo.';else tip=`${money(refill)} ki refill se lagbhag ${fmt(refillRange,1)} km ya ${fmt(refillDays,1)} din ka aapka entered commute cover ho sakta hai.`;
+ setText('refillTip',tip);const v=currentVehicle();setText('vehicleSummary',`${v.brand||''} ${v.model||''} · ${fmt(mileage,1)} km/l estimate`);savePrefs();
+}
+function savePrefs(){const prefs={};['category','brand','model','variant','mileage','oneWay','roundTrips','extraKm','daysWeek','monthDays','fuelPrice','fillAmount','origin','destination'].forEach(id=>prefs[id]=$(id).value);try{localStorage.setItem('fuelsaathi_prefs',JSON.stringify(prefs));}catch(e){}}
+function restorePrefs(){try{const p=JSON.parse(localStorage.getItem('fuelsaathi_prefs')||'{}');if(p.category)$('category').value=p.category;populateBrands(p.brand,p.model,p.variant);['mileage','oneWay','roundTrips','extraKm','daysWeek','monthDays','fuelPrice','fillAmount','origin','destination'].forEach(id=>{if(p[id]!==undefined && p[id]!==null && p[id]!=='')$(id).value=p[id];});}catch(e){populateBrands();}}
+let toastTimer;function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2700);}
+function toggleCustom(){ $('customPanel').classList.toggle('open'); if($('customPanel').classList.contains('open'))$('customBrand').focus(); }
+function saveCustom(){const cat=$('customCategory').value,brand=$('customBrand').value.trim(),model=$('customModel').value.trim(),variant=$('customVariant').value.trim()||'Standard',mileage=Number($('customMileage').value);if(!brand||!model||!mileage||mileage<1||mileage>150){toast('Brand, model aur valid mileage (1–150 km/l) enter karo.');return;}const v={cat,brand,model,variant,mileage};state.customVehicles=state.customVehicles.filter(x=>!(x.cat===cat&&x.brand.toLowerCase()===brand.toLowerCase()&&x.model.toLowerCase()===model.toLowerCase()&&x.variant.toLowerCase()===variant.toLowerCase()));state.customVehicles.push(v);saveState();$('category').value=cat;populateBrands(brand,model,variant);$('mileage').value=mileage;$('vehicleSummary').textContent=`${brand} ${model} · ${variant}`;$('customPanel').classList.remove('open');['customBrand','customModel','customVariant','customMileage'].forEach(id=>$(id).value='');calculate();toast('Gaadi save aur select ho gayi.');}
+function renderHistory(){const wrap=$('historyList');wrap.innerHTML='';if(!state.history.length){wrap.innerHTML='<div class="empty">Abhi koi refill save nahi hai. Amount daal kar “Save refill” dabao.</div>';return;}state.history.slice(0,8).forEach(item=>{const div=document.createElement('div');div.className='history-item';const left=document.createElement('div');const strong=document.createElement('strong');strong.textContent=item.label;const small=document.createElement('small');small.textContent=(item.date||'')+(item.odo!==null&&item.odo!==''?` · Odometer ${fmt(Number(item.odo),1)} km`:'');left.append(strong,small);const right=document.createElement('div');right.className='history-amount';const b=document.createElement('b');b.textContent=money(item.amount);const sm=document.createElement('small');sm.textContent='fuel expense';right.append(b,sm);div.append(left,right);wrap.appendChild(div);});}
+function saveRefill(){const amount=Number($('logAmount').value);const odo=$('logOdo').value.trim();if(!amount||amount<=0){toast('Refill amount ₹ mein enter karo.');return;}const price=value('fuelPrice');const item={amount,odo:odo===''?null:Number(odo),date:new Date().toLocaleDateString('en-IN'),label:`${currentVehicle().brand} ${currentVehicle().model}`.trim()||'Vehicle'};state.history.unshift(item);state.history=state.history.slice(0,100);$('fillAmount').value=amount;saveState();savePrefs();renderHistory();calculate();$('logAmount').value='';$('logOdo').value='';toast('Refill history save ho gayi.');}
+function exportCSV(){if(!state.history.length){toast('Export karne ke liye refill history nahi hai.');return;}const rows=[['Date','Vehicle','Amount INR','Odometer km'],...state.history.map(x=>[x.date,x.label,x.amount,x.odo??''])];const csv=rows.map(row=>row.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(',')).join('\r\n');const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='fuelsaathi-refill-history.csv';a.click();URL.revokeObjectURL(url);}
+function clearHistory(){if(!state.history.length){toast('History pehle se empty hai.');return;}if(confirm('Saari refill history delete karni hai?')){state.history=[];saveState();renderHistory();toast('Refill history clear ho gayi.');}}
+function getMapsPumpUrl(lat,lon){return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('petrol pump near '+lat+','+lon)}`;}
+function getLocation(openPump){if(!('geolocation' in navigator)){setText('locationStatus','Is browser mein location support nahi hai.');toast('Browser location support nahi karta.');return;}setText('locationStatus','Location request bheji ja rahi hai…');navigator.geolocation.getCurrentPosition(pos=>{const lat=pos.coords.latitude,lon=pos.coords.longitude;state.location={lat,lon,accuracy:pos.coords.accuracy};saveState();setText('locationStatus',`Location mil gayi (approx accuracy ${Math.round(pos.coords.accuracy)} m). Coordinates sirf Maps kholne ke liye use hote hain; permanently save nahi hote.`);if(openPump)window.open(getMapsPumpUrl(lat,lon),'_blank','noopener');else toast('Location mil gayi. Ab petrol pump button dobara dabao.');},err=>{const msg=err.code===1?'Location permission deny hui. Browser settings mein allow karo.':err.code===2?'Location abhi available nahi hai.':'Location request time out hui. Dobara try karo.';setText('locationStatus',msg);toast(msg);},{enableHighAccuracy:false,timeout:12000,maximumAge:300000});}
+function openPump(){if(state.location){window.open(getMapsPumpUrl(state.location.lat,state.location.lon),'_blank','noopener');}else getLocation(false);}
+function openRoute(){const origin=$('origin').value.trim(),dest=$('destination').value.trim();if(!origin||!dest){toast('Starting point aur destination dono bharo.');return;}window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(dest)}&travelmode=driving`,'_blank','noopener');}
+function resetSample(){if(!confirm('Calculator ko Activa 6G, 9 km one-way aur ₹200 refill sample par reset karein? Saved custom vehicles aur history delete nahi honge.'))return;$('category').value='Scooty';populateBrands('Honda','Activa 6G 110','Standard');$('mileage').value=45;$('oneWay').value=9;$('roundTrips').value=1;$('extraKm').value=0;$('daysWeek').value=6;$('monthDays').value=26;$('fuelPrice').value=103.50;$('fillAmount').value=200;calculate();toast('Sample values reset ho gaye.');}
+$('category').addEventListener('change',()=>populateBrands());$('brand').addEventListener('change',()=>populateModels());$('model').addEventListener('change',()=>populateVariants());$('variant').addEventListener('change',()=>populateVariants($('variant').value));
+['mileage','oneWay','roundTrips','extraKm','daysWeek','monthDays','fuelPrice','fillAmount'].forEach(id=>$(id).addEventListener('input',calculate));
+$('calculateBtn').addEventListener('click',()=>{calculate();$('resultCard').scrollIntoView({behavior:'smooth',block:'start'});toast('Estimate update ho gaya.');});$('toggleCustom').addEventListener('click',toggleCustom);$('saveCustom').addEventListener('click',saveCustom);$('saveRefill').addEventListener('click',saveRefill);$('exportBtn').addEventListener('click',exportCSV);$('clearHistoryBtn').addEventListener('click',clearHistory);$('locateBtn').addEventListener('click',()=>getLocation(false));$('nearPumpBtn').addEventListener('click',openPump);$('routeBtn').addEventListener('click',openRoute);$('resetBtn').addEventListener('click',resetSample);$('helpBtn').addEventListener('click',()=>$('guideCard').scrollIntoView({behavior:'smooth',block:'start'}));
+loadState();restorePrefs();renderHistory();calculate();
+if('serviceWorker' in navigator && location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();state.deferredPrompt=e;$('installBtn').hidden=false;});$('installBtn').addEventListener('click',async()=>{if(!state.deferredPrompt)return;state.deferredPrompt.prompt();await state.deferredPrompt.userChoice;state.deferredPrompt=null;$('installBtn').hidden=true;});
+</script>
+</body>
+</html>

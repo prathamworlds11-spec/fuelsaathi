@@ -1,0 +1,11 @@
+{
+  "name": "FuelSaathi — Fuel & Ride Tracker",
+  "short_name": "FuelSaathi",
+  "description": "A free, simple petrol cost and distance tracker for scooters, bikes and cars.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#101012",
+  "theme_color": "#111113",
+  "icons": [{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
