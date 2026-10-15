@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://prathamworlds11-spec.github.io/fuelsaathi/sitemap.xml
